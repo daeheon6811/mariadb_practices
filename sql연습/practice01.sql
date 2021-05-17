@@ -14,6 +14,11 @@ SELECT CONCAT(first_name," ",last_name) AS 이름  , gender AS 성별 , hire_dat
 SELECT COUNT(*) FROM employees where gender ='M';
 SELECT COUNT(*) FROM employees where gender ='F';
 
+SELECT  (SELECT COUNT(*) FROM employees where gender ='M') AS '남' , (SELECT COUNT(*) FROM employees where gender ='F') AS '여'
+FROM employees LIMIT 1;
+
+
+
 
 -- 문제4.
 -- 현재 근무하고 있는 직원 수는 몇 명입니까? (salaries 테이블을 사용합니다.) 
