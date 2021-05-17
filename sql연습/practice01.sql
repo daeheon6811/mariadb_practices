@@ -11,7 +11,9 @@ SELECT CONCAT(first_name," ",last_name) AS 이름  , gender AS 성별 , hire_dat
 -- 문제3.
 -- 여직원과 남직원은 각 각 몇 명이나 있나요?
 
-SELECT COUNT(*) FROM employees GROUP BY gender;
+SELECT COUNT(*) FROM employees where gender ='M';
+SELECT COUNT(*) FROM employees where gender ='F';
+
 
 -- 문제4.
 -- 현재 근무하고 있는 직원 수는 몇 명입니까? (salaries 테이블을 사용합니다.) 
@@ -36,19 +38,19 @@ select * from departments order by length(dept_name) DESC;
 -- 문제8.
 -- 현재 급여가 120,000이상 받는 사원은 몇 명이나 있습니까?
 
-SELECT  DISTINCT COUNT(*) FROM salaries  where salary >= 120000;
+SELECT  DISTINCT COUNT(*) FROM salaries  where salary >= 120000  and to_date = '9999-01-01';
  
 -- 문제9.
 -- 어떤 직책들이 있나요? 중복 없이 이름이 긴 순서대로 출력해 보세요.
 
-select * from departments ORDER BY length(dept_name) DESC;
+select * from departments ORDER BY length(dept_name) DESC; 
 
 -- 문제10
 -- 현재 Enginner 직책의 사원은 총 몇 명입니까?
 
-select count(*) from titles d where title like '%Engineer%';
+select count(*) from titles d where title like '%Engineer%' and to_date = '9999-01-01';
 
 -- 문제11
--- 사번이 13250(Zeydy)인 지원이 직책 변경 상황을 시간순으titlesemp_no로 출력해보세요.
+-- 사번이 13250(Zeydy)인 지원이 직책 변경 상황을 시간순으로 출력해보세요.
 
 select * FROM titles t  WHERE t.emp_no ="13250" order by t.to_date asc;
