@@ -33,6 +33,8 @@ group by emp_no
 -- 이미 where절은 실행이 되었기 때문에 having절에서 조건을 주어야 한다.
 
 
+
+
 -- order by
 select emp_no , avg(salary)
 from salarie 
