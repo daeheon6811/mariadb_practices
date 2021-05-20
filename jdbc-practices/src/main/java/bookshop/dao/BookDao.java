@@ -102,7 +102,7 @@ public class BookDao {
 		try {
 			conn = getConnection();
 			
-			String sql ="select no, title , status , author_no from book";
+			String sql ="select a.no, a.title , a.status , a.author_no , b.name from book a, author b where a.no = b.no";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -111,12 +111,14 @@ public class BookDao {
 				String title = rs.getString(2);
 				String status = rs.getString(3);
 				Long authorno = rs.getLong(4);
+				String authorname = rs.getString(5);
 				
 				BookVo vo = new BookVo();
 				vo.setNo(no);
 				vo.setTitle(title);
 				vo.setStatus(status);
 				vo.setAuthorNo(authorno);
+				vo.setAuthorName(authorname);
 				
 				result.add(vo);
 				
