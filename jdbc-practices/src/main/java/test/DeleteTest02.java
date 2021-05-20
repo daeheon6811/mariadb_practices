@@ -5,15 +5,17 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class InsertTest02 {
-	
+public class DeleteTest02 {
 	public static void main(String[] args) {
-		insert("영업2");
-		insert("개발2");
-		insert("기획2");
+		
+		Boolean result = delete(2L);
+	    System.out.println(result ? "성공:" : "실패");
+		if(result) {
+			System.out.println("성공");
+		}
 	}
 	
-    public static Boolean insert(String name)
+    public static Boolean delete(Long no)
 	{
 		Connection conn = null;
 		PreparedStatement pstmt =null;
@@ -25,15 +27,18 @@ public class InsertTest02 {
 			String url = "jdbc:mysql://192.168.80.119:3307/employees";
 			conn = DriverManager.getConnection(url, "hr", "hr");
 			
-			// 3. SQL문을 준비
-			// 5. sql 실행
-						String sql ="insert "
-								+ "into "
-								+ "dept "
-								+ "values(null, ?)";				
-						pstmt = conn.prepareStatement(sql);
-			// 4 .바인딩(Binding)
-			pstmt.setString(1,name);			
+			// 3. Statement
+
+			
+			// 4 .sql문을 실행
+			String sql ="delete "
+					+ "from "
+					+ "dept "
+					+ "where no = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setLong(1,no);
+
 			int count = pstmt.executeUpdate();
 			
 			result = (count == 1);
@@ -62,6 +67,5 @@ public class InsertTest02 {
 		return result;
 		// 2.
 	}
-
 
 }

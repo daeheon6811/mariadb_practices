@@ -5,18 +5,22 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class InsertTest02 {
+public class UpdateTest02 {
 	
 	public static void main(String[] args) {
-		insert("영업2");
-		insert("개발2");
-		insert("기획2");
+		DeptVo vo = new DeptVo();
+		vo.setNo(4L);
+		vo.setName("전략기획팀 pre");		
+		Boolean result = update(vo);
+		
+		if(result) {
+			System.out.println("성공");
+		}
 	}
 	
-    public static Boolean insert(String name)
-	{
+	public static Boolean update(DeptVo vo) {
 		Connection conn = null;
-		PreparedStatement pstmt =null;
+		PreparedStatement pstmt =null;	
 		boolean result = false;
 		try {
 			// 1. JDBC Driver 로딩
@@ -25,15 +29,18 @@ public class InsertTest02 {
 			String url = "jdbc:mysql://192.168.80.119:3307/employees";
 			conn = DriverManager.getConnection(url, "hr", "hr");
 			
-			// 3. SQL문을 준비
-			// 5. sql 실행
-						String sql ="insert "
-								+ "into "
-								+ "dept "
-								+ "values(null, ?)";				
-						pstmt = conn.prepareStatement(sql);
-			// 4 .바인딩(Binding)
-			pstmt.setString(1,name);			
+			// 4 .sql문을 실행
+			String sql ="update dept "
+					+ "set name= ?"
+					+ "where no = ? ";
+			// 3. Statement
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getName());
+			pstmt.setLong(2, vo.getNo());
+			
+	
+			
 			int count = pstmt.executeUpdate();
 			
 			result = (count == 1);
@@ -62,6 +69,5 @@ public class InsertTest02 {
 		return result;
 		// 2.
 	}
-
 
 }
