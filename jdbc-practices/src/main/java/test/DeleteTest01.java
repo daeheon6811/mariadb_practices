@@ -4,15 +4,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class InsertTest01 {
-	
+public class DeleteTest01 {
 	public static void main(String[] args) {
-		insert("영업");
-		insert("개발");
-		insert("기획");
+		
+		Boolean result = delete(2L);
+	    System.out.println(result ? "성공:" : "실패");
+		if(result) {
+			System.out.println("성공");
+		}
 	}
 	
-    public static Boolean insert(String name)
+    public static Boolean delete(Long no)
 	{
 		Connection conn = null;
 		java.sql.Statement stmt =null;
@@ -28,10 +30,10 @@ public class InsertTest01 {
 			stmt = conn.createStatement();
 			
 			// 4 .sql문을 실행
-			String sql ="insert "
-					+ "into "
+			String sql ="delete "
+					+ "from "
 					+ "dept "
-					+ "values(null, '"+ name +"')";
+					+ "where no = '"+ no +"' ";
 			
 			int count = stmt.executeUpdate(sql);
 			
@@ -61,6 +63,5 @@ public class InsertTest01 {
 		return result;
 		// 2.
 	}
-
 
 }

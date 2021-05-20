@@ -4,16 +4,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class InsertTest01 {
+public class UpdateTest01 {
 	
 	public static void main(String[] args) {
-		insert("영업");
-		insert("개발");
-		insert("기획");
+		DeptVo vo = new DeptVo();
+		vo.setNo(4L);
+		vo.setName("전략기획팀");		
+		Boolean result = update(vo);
+		
+		if(result) {
+			System.out.println("성공");
+		}
 	}
 	
-    public static Boolean insert(String name)
-	{
+	public static Boolean update(DeptVo vo) {
 		Connection conn = null;
 		java.sql.Statement stmt =null;
 		boolean result = false;
@@ -28,10 +32,9 @@ public class InsertTest01 {
 			stmt = conn.createStatement();
 			
 			// 4 .sql문을 실행
-			String sql ="insert "
-					+ "into "
-					+ "dept "
-					+ "values(null, '"+ name +"')";
+			String sql ="update dept "
+					+ "set name='"+ vo.getName() +"' "
+					+ "where no = '"+vo.getNo()+"'";
 			
 			int count = stmt.executeUpdate(sql);
 			
@@ -61,6 +64,5 @@ public class InsertTest01 {
 		return result;
 		// 2.
 	}
-
 
 }
