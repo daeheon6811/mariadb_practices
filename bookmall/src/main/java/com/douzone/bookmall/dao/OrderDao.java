@@ -68,7 +68,7 @@ public class OrderDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "insert into orders values(null, ?, ?, ? , ?)";
+			String sql = "insert into bookmall.order values(null, ?, ?, ? , ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, vo.getPrice());
 			pstmt.setString(2, vo.getLocation());
@@ -105,9 +105,9 @@ public class OrderDao {
 		try {
 			conn = getConnection();
 			
-			String sql = "insert into orderbook values(?, ?, ?, ?)";
+			String sql = "insert into order_book values(?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, vo.getNo());
+			pstmt.setInt(1, vo.getOrderNo());
 			pstmt.setInt(2, vo.getUnit());
 			pstmt.setInt(3, vo.getPrice());
 			pstmt.setInt(4, vo.getBookNo());
@@ -176,7 +176,7 @@ public class OrderDao {
 			conn = getConnection();
 			
 			String sql ="SELECT a.order_no , a.unit , a.price , a.book_no "
-					+ "from orderbook a , book b where a.book_no = b.no";
+					+ "from order_book a , book b where a.book_no = b.no";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -226,8 +226,8 @@ public class OrderDao {
 			try {
 				conn = getConnection();
 				
-				String sql ="SELECT a.no , a.price , a.location , b.unit , b.order_no , c.no \r\n"
-						+ "from orders a, orderbook b , member c ";
+				String sql ="SELECT a.no , a.price , a.location , a.order_no , a.member_no \r\n"
+						+ "from bookmall.order a  ";
 				pstmt = conn.prepareStatement(sql);
 				rs = pstmt.executeQuery();
 

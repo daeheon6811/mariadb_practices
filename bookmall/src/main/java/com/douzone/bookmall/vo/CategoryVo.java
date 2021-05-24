@@ -20,7 +20,7 @@ public class CategoryVo {
 	}
 	@Override
 	public String toString() {
-		return "CategoryVo [no=" + no + ", name=" + name + "]";
+		return "CategoryVo [번호=" + no + ", 이름=" + name + "]";
 	}
 	
 	

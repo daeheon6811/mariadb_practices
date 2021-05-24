@@ -29,21 +29,8 @@ public class BookDaoTest {
 		CartDao cartDao = new CartDao();
 		OrderDao orderDao = new OrderDao();
 		
-		/*
-		MemberVo membervo = new MemberVo();
-		membervo.setEmail("wow1186@naver.com");
-		membervo.setName("박대헌");
-		membervo.setPassword("123123");
-		membervo.setPhone("01025281186");
-		memberDao.insert(membervo);
 		
-		
-		membervo = new MemberVo();
-		membervo.setEmail("test1186@naver.com");
-		membervo.setName("홍길동");
-		membervo.setPassword("123123");
-		membervo.setPhone("0101111111");
-		memberDao.insert(membervo);
+	
 		
 		
 		CategoryVo categoryVo = new CategoryVo();
@@ -76,6 +63,46 @@ public class BookDaoTest {
 		bookVo.setPrice(40000);
 		bookDao.insert(bookVo);
 		
+		
+		MemberVo membervo = new MemberVo();
+		membervo.setEmail("wow1186@naver.com");
+		membervo.setName("박대헌");
+		membervo.setPassword("123123");
+		membervo.setPhone("01025281186");
+		memberDao.insert(membervo);
+		
+		
+		membervo = new MemberVo();
+		membervo.setEmail("test1186@naver.com");
+		membervo.setName("홍길동");
+		membervo.setPassword("123123");
+		membervo.setPhone("0101111111");
+		memberDao.insert(membervo);
+		
+		
+
+		OrderVo orderVo = new OrderVo();
+		orderVo.setPrice(50000);
+		orderVo.setLocation("김해");
+		orderVo.setMemberNo(1);
+		orderVo.setOrderNo(10001);
+		orderDao.insertorders(orderVo);
+		
+		orderVo = new OrderVo();
+		orderVo.setPrice(50000);
+		orderVo.setLocation("부산");
+		orderVo.setMemberNo(1);
+		orderVo.setOrderNo(10002);
+		orderDao.insertorders(orderVo);
+		
+		orderVo = new OrderVo();
+		orderVo.setPrice(50000);
+		orderVo.setLocation("양산");
+		orderVo.setMemberNo(1);
+		orderVo.setOrderNo(10003);
+		orderDao.insertorders(orderVo);
+		
+
 		CartVo cartVo = new CartVo();
 		cartVo.setBookNo(1);
 		cartVo.setMemberNo(1);
@@ -94,29 +121,26 @@ public class BookDaoTest {
 		cartVo.setUnit(4000);
 		cartDao.insert(cartVo);
 		
-
-		OrderVo orderVo = new OrderVo();
-		orderVo.setPrice(50000);
-		orderVo.setLocation("김해");
-		orderVo.setMemberNo(1);
-		orderVo.setOrderNo(10001);
-		orderDao.insertorders(orderVo);
+		OrderVo orderVo2 = new OrderVo();
+		orderVo2.setOrderNo(1);
+		orderVo2.setUnit(5);
+		orderVo2.setPrice(8500);		
+		orderVo2.setBookNo(1);
+		orderDao.insertorderbook(orderVo2);
 		
-		orderVo = new OrderVo();
-		orderVo.setNo(1);
-		orderVo.setUnit(5);
-		orderVo.setPrice(8500);		
-		orderVo.setBookNo(1);
-		orderDao.insertorders(orderVo);
+		orderVo2 = new OrderVo();
+		orderVo2.setOrderNo(1);
+		orderVo2.setUnit(5);
+		orderVo2.setPrice(8500);		
+		orderVo2.setBookNo(2);
+		orderDao.insertorderbook(orderVo2);
 		
-		orderVo = new OrderVo();
-		orderVo.setNo(1);
-		orderVo.setUnit(5);
-		orderVo.setPrice(7000);		
-		orderVo.setBookNo(2);
-		orderDao.insertorders(orderVo);
-		*/
-
+		orderVo2 = new OrderVo();
+		orderVo2.setOrderNo(1);
+		orderVo2.setUnit(5);
+		orderVo2.setPrice(6000);		
+		orderVo2.setBookNo(1);
+		orderDao.insertorderbook(orderVo2);
 		
 		System.out.println("================== 유저 ================");
 		
@@ -174,7 +198,7 @@ public class BookDaoTest {
 		List<OrderVo> orderlist = new ArrayList<OrderVo>();
 		orderlist = orderDao.findAllOrders();
 		for (OrderVo vo : orderlist) {
-			System.out.println(vo.toString());
+			System.out.println(vo.toStringOrder());
 		}
 
 		System.out.println("================주문목록===================");

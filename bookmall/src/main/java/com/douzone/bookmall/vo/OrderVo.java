@@ -58,10 +58,13 @@ public class OrderVo {
 	}
 	@Override
 	public String toString() {
-		return "OrderVo [no=" + no + ", price=" + price + ", location=" + location + ", unit=" + unit + ", orderNo="
-				+ orderNo + ", memberNo=" + memberNo + ", bookNo=" + bookNo + "]";
+		return "주문 [주문번호=	"+ orderNo + ", 가격=" + price + ", 수량=" + unit + ", 책번호=" + bookNo + "]";
 	}
 
+	public String toStringOrder() {
+		return "주문 책 [번호=" + no + ", 가격=" + price + ", 위치=" + location + ", 수량=" + unit + ", 주문번호="
+				+ orderNo + ", 고객번호=" + memberNo + ", 책번호=" + bookNo + "]";
+	}
 	
 	
 

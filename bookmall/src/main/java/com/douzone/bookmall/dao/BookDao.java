@@ -41,7 +41,7 @@ public class BookDao {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getTitle());
 			pstmt.setInt(2, vo.getPrice());
-			pstmt.setLong(3, vo.getNo());
+			pstmt.setInt(3, vo.getCategoryNo());
 			
 			int count = pstmt.executeUpdate();
 			result = count == 1;
